@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/Ajustes_Layout.cshtml";
+    ViewData["Title"] = "Cursos";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Crear nuevo Curso</h1>
+    <form action="/admin/CrearCursos" class="col-12" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="Nombre">Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" name="Nombre" value="@Model.Nombre" required />
+            <p class="alert-danger">@Html.ValidationMessage("Nombre")</p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="Detalle">Detalle</label>
+            <input type="text" class="form-control" placeholder="Detalle" name="Detalle" value="@Model.Detalle" required />
+            <p class="alert-danger">@Html.ValidationMessage("Detalle")</p>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="Descripcion">Descripción del curso</label>
+        </div>
+        <textarea id="text" rows="5" cols="60" name="Descripcion" value="@Model.Descripcion"></textarea>
+
+        <div class="mb-3">
+            <label class="form-label" for="Video">Video introductorio</label>
+            <input type="text" class="form-control" placeholder="Video introductorio" name="Video" value="@Model.Video" required />
+            <p class="alert-danger">@Html.ValidationMessage("Video")</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="IdDocente">Docente</label>
+            <select name="IdDocente" class="form-control" required>
+                <option value="">-- Selecciona un docente --</option>
+                @foreach (var item in ViewBag.Docentes)
+                {
+                    <option value="@item.Id">@item.Nombres @item.Apellidos</option>
+                }
+            </select>
+            <p class="alert-danger">@Html.ValidationMessage("IdDocente")</p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="IdCategoria">Categoria</label>
+            <select name="IdCategoria" class="form-control" required>
+                <option value="">-- Selecciona una categoria --</option>
+                @foreach (var item in ViewBag.Categorias)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+            <p class="alert-danger">@Html.ValidationMessage("IdCategoria")</p>
+        </div>
+        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+        <a class="btn btn-danger" href="/admin/">Cancelar</a>
+    </form>
+</div>
+
+<script>
+    var simplemde = new SimpleMDE({ element: document.getElementById("text") });
+</script>

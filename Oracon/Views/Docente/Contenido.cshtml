@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "Contenido";
+    Layout = "~/Views/Shared/Ajustes_Layout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Agregar Contenido de Curso</h1>
+    <form action="/docente/Contenido" enctype="multipart/form-data" class="col-12" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="IdCurso"><strong>Selecciona un curso</strong></label>
+            <select id="curso" onchange="cargarModulos()" name="IdCurso" class="form-control" required>
+                <option value="">-- Selecciona un curso --</option>
+                @foreach (var item in ViewBag.Cursos)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+            <p class="alert-danger">@Html.ValidationMessage("IdCurso")</p>
+        </div>
+
+        <div class="mb-3" id="moduloEx">
+            <label class="form-label" for="IdCurso"><strong>Selecciona un modulo del curso</strong></label>
+            <select id="modulo" onchange="cargarClases()" name="IdModulo" class="form-control">
+                <option value="0">-- Seleccione un modulo --</option>
+            </select>
+        </div>
+
+        <div class="mb-3" id="moduloNew">
+            <label class="form-label alert-danger" for="NombreModulo"><strong>O agregar un nuevo modulo al curso</strong></label>
+            <input id="moduloNew2" type="text" class="form-control" placeholder="Nombre del Modulo" name="NombreModulo" />
+        </div>
+
+        <div class="mb-3" id="ClaseEx">
+            <label class="form-label" for="IdCurso"><strong>Selecciona clase del modulo</strong></label>
+            <select id="clase" name="IdClase" class="form-control">
+                <option value="0">-- Seleccione una clase --</option>
+            </select>
+        </div>
+
+        <div class="mb-3" id="claseNew">
+            <label class="form-label alert-danger" for="NombreClase"><strong>O agregar una nueva clase al Modulo</strong></label>
+            <input type="text" class="form-control" placeholder="NombreClase" name="NombreClase" />
+        </div>
+
+        <div class="mb-3" id="claseDes">
+            <label class="form-label" for="NombreClase"><strong>Describe brevemente la clase</strong></label>
+            <input type="text" class="form-control" placeholder="Descripcion de la clase" name="DescripcionClase" />
+        </div>
+
+        <div class="mb-3" id="claseVid">
+            <label class="form-label" for="videoClase"><strong>Agregar video de la clase</strong></label>
+            <input type="text" class="form-control" placeholder="videoClase" name="videoClase" />
+            <p class="alert-danger">@Html.ValidationMessage("videoClase")</p>
+        </div>
+
+        <div class="mb-3" id="claseRec">
+            <label class="form-label" for="videoClase"><strong>Agregar Recurso a la clase</strong></label>
+            <input id="file" type="file" class="form-control" multiple name="tareas" />
+        </div>
+
+        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+        <a class="btn btn-danger" href="/docente/">Cancelar</a>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/datatables-simple-demo.js" asp-append-version="true"></script>
+}
+
+<script>
+    function cargarModulos() {
+        var $curso = $('select#curso');
+        var $modulo = $('select#modulo');
+        $.ajax({
+            url: '/Docente/Modulos?idCurso=' + $curso.val(),
+            type: 'get'
+        }).done(function (items) {
+            var options = '<option value="">-- Seleccione un modulo --</option>';
+            for (i = 0; i < items.length; i++) {
+                options += `<option value="${items[i].id}">${items[i].nombre}</option>`
+            }
+            $modulo.html(options);
+            cargarClases();
+        });
+    }
+
+    function cargarClases() {
+        var $modulo = $('select#modulo');
+        var $clase = $('select#clase');
+        $.ajax({
+            url: '/Docente/Clases?idModulo=' + $modulo.val(),
+            type: 'get'
+        }).done(function (items) {
+            var options = '<option value="">-- Seleccione una clase --</option>';
+            for (i = 0; i < items.length; i++) {
+                options += `<option value="${items[i].id}">${items[i].nombre}</option>`
+            }
+            $clase.html(options);
+        })
+    }
+</script>

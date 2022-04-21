@@ -1,0 +1,747 @@
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+div iframe {
+    width: 100%;
+    height: 600px;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/** BARRA **/
+
+div.barra {
+    background-color: black;
+    padding: 15px 0;
+}
+
+div.fixed {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+div.logo {
+    width: 80%;
+    float: left;
+}
+
+    div.logo img {
+        width: 25%;
+    }
+
+@media only screen and (min-width:768px) {
+    div.logo {
+        width: 33%;
+    }
+}
+
+nav.navegacion-principal {
+    display: none;
+    width: 100%;
+}
+
+    nav.navegacion-principal a {
+        font-family: 'Oswald', sans-serif;
+        color: #ffffff;
+        font-size: 1.4em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all .6s ease;
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+        clear: both;
+    }
+
+        nav.navegacion-principal a:hover {
+            background-color: #fe4918;
+        }
+
+        nav.navegacion-principal a:last-child {
+            border: 2px solid #fe4918;
+            color: #fe4918;
+        }
+
+            nav.navegacion-principal a:last-child:hover {
+                color: #ffffff;
+            }
+
+@media only screen and (min-width:768px) {
+    nav.navegacion-principal {
+        width: 67%;
+        float: right;
+        text-align: right;
+        display: block;
+    }
+
+        nav.navegacion-principal a {
+            padding: 0px 10px;
+            display: inline-block;
+            width: auto;
+            display: inline-block;
+            text-align: center;
+            margin: 0 10px 0 0;
+        }
+}
+
+div.menu-movil {
+    width: 60px;
+    display: block;
+    float: right;
+    text-align: right;
+    margin-top: 12px;
+}
+
+    div.menu-movil:hover {
+        cursor: pointer;
+    }
+
+@media only screen and (min-width: 768px) {
+    div.menu-movil {
+        display: none;
+    }
+}
+
+div.menu-movil span {
+    height: 8px;
+    margin-bottom: 6px;
+    background-color: white;
+    display: block;
+}
+
+/** FOOTER**/
+
+/** GLOBALES **/
+
+.contenedor {
+    width: 98%;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width:480px) {
+    .contenedor {
+        width: 95%;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .contenedor {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .contenedor {
+        width: 90%;
+        max-width: 1100px;
+    }
+}
+
+.seccion {
+    padding: 30px 0;
+}
+
+    .seccion p {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    .seccion .line_curso {
+        padding: 10px 25px 0;
+        font-size: 1.1em;
+        text-align: justify
+    }
+
+.cuadro {
+    margin: 25px;
+    text-align: justify
+}
+
+ul li i.fa-check {
+    color: green;
+    margin: 10px 10px 0 0;
+}
+
+a.button, li a.button, div a.button {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 5px 30px;
+    margin: 10px 5px
+}
+
+li a.favorito {
+    font-size: 1.2em;
+    padding: 5px 10px;
+    margin: 10px 15px 0px 15px;
+    border-radius: 50px;
+    border: 1.5px solid black;
+    background-color: white
+}
+
+    li a.favorito:hover {
+        background-color: #efefef;
+        border-color: black;
+        cursor: pointer
+    }
+
+.button {
+    background-color: orangered;
+    padding: 10px 40px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-top: 10px;
+    display: inline-block;
+    transition: all .5s ease;
+    border-color: orangered;
+}
+
+    .button:hover {
+        background-color: #d00000;
+        border-color: #e00000;
+    }
+
+div a.aprendizaje {
+    background-color: #9d00CCcc;
+    padding: 10px 40px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    transition: all .5s ease;
+    border-color: #9d00CCcc;
+}
+
+.aprendizaje:hover {
+    background-color: blueviolet;
+    border-color: blueviolet;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.float-right{
+    float: right;
+}
+
+/** PRECIOS DE CURSOS GENERAL **/
+ul.lista-precios > li {
+    padding: 5px;
+}
+
+@media only screen and (min-width:500px) {
+    ul.lista-precios > li {
+        width: 50%;
+        float: left;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    ul.lista-precios > li {
+        width: 33%;
+        float: left;
+    }
+}
+
+@media only screen and (min-width:1000px) {
+    ul.lista-precios > li {
+        width: 25%;
+        float: left;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    ul.lista-precios > li {
+        width: 20%;
+        float: left;
+    }
+}
+
+div.tabla-precio {
+    border: 1px solid #b5b5b5;
+    padding: 15px 0;
+    text-align: center;
+    transition: all .5s ease;
+}
+
+    div.tabla-precio:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 50px #666;
+    }
+
+    div.tabla-precio ul {
+        font-size: 12px;
+        margin-top: 5px;
+        line-height: 20px;
+        padding: 0;
+    }
+
+    div.tabla-precio h3 {
+        font-size: 20px;
+        text-transform: uppercase;
+        background-color: orangered;
+        clear: both;
+        color: white;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    div.tabla-precio a img {
+        width: 190px;
+        height: 110px;
+        margin: -16px 0 1px 0
+    }
+
+div.features-box-icon a img {
+    width: 100%;
+    height: 250px
+}
+
+/* ACCORDION */
+.accordion-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,border-radius .15s ease
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .accordion-button {
+        transition: none
+    }
+}
+
+.accordion-button:not(.collapsed) {
+    color: #0c63e4;
+    background-color: #e7f1ff;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125)
+}
+
+    .accordion-button:not(.collapsed)::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        transform: rotate(-180deg)
+    }
+
+.accordion-button::after {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: auto;
+    content: "";
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    transition: transform .2s ease-in-out
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .accordion-button::after {
+        transition: none
+    }
+}
+
+.accordion-button:hover {
+    z-index: 2
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25)
+}
+
+.accordion-header {
+    margin-bottom: 0
+}
+
+.accordion-item {
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125)
+}
+
+    .accordion-item:first-of-type {
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem
+    }
+
+        .accordion-item:first-of-type .accordion-button {
+            border-top-left-radius: calc(.25rem - 1px);
+            border-top-right-radius: calc(.25rem - 1px)
+        }
+
+    .accordion-item:not(:first-of-type) {
+        border-top: 0
+    }
+
+    .accordion-item:last-of-type {
+        border-bottom-right-radius: .25rem;
+        border-bottom-left-radius: .25rem
+    }
+
+        .accordion-item:last-of-type .accordion-button.collapsed {
+            border-bottom-right-radius: calc(.25rem - 1px);
+            border-bottom-left-radius: calc(.25rem - 1px)
+        }
+
+        .accordion-item:last-of-type .accordion-collapse {
+            border-bottom-right-radius: .25rem;
+            border-bottom-left-radius: .25rem
+        }
+
+.accordion-body {
+    padding: 1rem 1.25rem
+}
+
+.accordion-flush .accordion-collapse {
+    border-width: 0
+}
+
+.accordion-flush .accordion-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0
+}
+
+    .accordion-flush .accordion-item:first-child {
+        border-top: 0
+    }
+
+    .accordion-flush .accordion-item:last-child {
+        border-bottom: 0
+    }
+
+    .accordion-flush .accordion-item .accordion-button {
+        border-radius: 0
+    }
+
+/*Menu curso*/
+div.resumen-curso {
+    display: none
+}
+
+div.menu2 {
+    display: block;
+    background-color: white
+}
+
+@media only screen and (min-width:1000px) {
+    div.resumen-curso {
+        margin: 50px 20px;
+        width: 350px;
+        height: auto;
+        display: block;
+        border: 1px solid #b5b5b5;
+        position: fixed;
+        right: 0;
+        box-shadow: 0px 0px 5px #666;
+        background-color: white
+    }
+    div.menu2 {
+        display: none
+    }
+}
+
+@media only screen and (min-width:1000px) {
+    div.resumen-curso div {
+        text-align: center
+    }
+}
+
+@media only screen and (min-width:1000px) {
+    div.curso-detalle {
+        margin-right: 380px;
+        padding: 0 25px
+    }
+}
+
+div.resumen-curso img {
+    width: 330px;
+    height: 205px;
+    display: block;
+    margin: 8px auto;
+}
+
+div.resumen-curso ul {
+    margin: 20px 20px;
+}
+
+div.resumen-curso h5 {
+    margin: 20px 0;
+}
+
+div.resumen-curso i {
+    margin: 8px 15px;
+}
+
+div.cuadro img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+}
+
+div.comentario {
+    padding: 0 0 0 50px;
+    margin-bottom: 10px;
+} 
+
+/* Desarrollo  */
+
+.menu::-webkit-scrollbar {
+    display: none;
+}
+
+.menu {
+    -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    height: 100vh;
+    max-height: 100vh !important;
+    max-width: 80vw !important;
+    min-width: 45px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 0;
+    position: fixed !important;
+    top: calc(67px);
+    width: 28%;
+    left: 0;
+    border-block-color: black;
+    padding: 10px 0;
+    border-right: 1px solid black;
+    background-color: white
+}
+
+    .menu h3 {
+        text-align: center
+    }
+
+.section {
+    position: relative;
+    width: 65%;
+    padding-top: 20px;
+    left: 30%;
+}
+
+    .section h2 {
+        padding-top: 30px;
+        text-align: center;
+    }
+
+div.footer-desarrollo {
+    position: relative;
+    width: 72%;
+    left: 28%;
+}
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+.hidden {
+    display: none !important;
+}
+
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+
+.sr-only.focusable:active,
+.sr-only.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  /*
+     * Printing Tables:
+     * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

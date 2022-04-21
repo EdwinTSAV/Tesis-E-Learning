@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Categorias";
+    Layout = "~/Views/Shared/Ajustes_Layout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Agregar Categorias</h1>
+    <form action="/admin/Categorias" class="col-12" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="Nombre">Agregar nueva Categoria</label>
+            <input type="text" class="form-control" placeholder="Nombre" name="Nombre" required />
+        </div>
+        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+        <a class="btn btn-danger" href="/ajustes/index">Cancelar</a>
+    </form>
+</div>
+

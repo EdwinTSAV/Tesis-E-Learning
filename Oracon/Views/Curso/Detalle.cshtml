@@ -1,0 +1,272 @@
+﻿@{ ViewData["Title"] = ViewBag.Nombre;
+    var curso = (Curso)Model;
+    int i = 1;
+    int cl = 0;}
+
+<div class="resumen-curso" id="deslizable">
+    <img class="img-detalle" alt="@curso.Nombre" src="@curso.Imagen">
+    <h2 class="text-center">
+        @if (curso.Precio > 0)
+        {
+            <span>S/ @curso.Precio</span>
+        }
+        else
+        {
+            <span>Gratuito</span>
+        }
+    </h2>
+    <ul>
+        <li><i class="fa fa-user" aria-hidden="true"></i>@curso.Docente.Nombres @curso.Docente.Apellidos</li>
+        <li><i class="fa fa-bookmark" aria-hidden="true"></i>@curso.Categoria.Nombre</li>
+        <li><h5>Este curso contiene</h5></li>
+        <li><i class="fa fa-book" aria-hidden="true"></i>@curso.Modulos.Count Modulos</li>
+        @foreach (var item in curso.Modulos)
+        {
+            cl += item.Clases.Count;
+        }
+        <li><i class="fa fa-television" aria-hidden="true"></i>@cl Clases</li>
+        <li><i class="fa fa-unlock" aria-hidden="true"></i>Acceso de por vida</li>
+    </ul>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div>
+            @if (ViewBag.Favorito)
+            {
+                <a id="favorite_@curso.Id" class="button favorito"><i onclick="nofavorite(@curso.Id)" class="fa fa-heart" aria-hidden="true"></i></a>
+            }
+            else
+            {
+                <a id="favorite_@curso.Id" class="button favorito"><i onclick="favorite(@curso.Id)" class="fa fa-heart-o" aria-hidden="true"></i></a>
+            }
+            
+            @if (ViewBag.Cesta == "Nada")
+            {
+                <a class="button" onclick="Comprar(@curso.Id)" ><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+            }
+            else if (ViewBag.Cesta == "Cesta")
+            {
+                <a class="button" onclick="noComprar(@curso.Id)" ><i class="fa fa-shopping-cart" aria-hidden="true"></i> Quitar</a>
+            }
+            else if (ViewBag.Cesta == "Pagado")
+            {
+                <a href="/Curso/Desarrollo?idCurso=@curso.Id" class="button">Ir al curso</a>
+            }
+        </div>
+    }
+    else
+    {
+        <div>
+            <a class="button" href="/User/Login"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+            <a class="button" href="/User/Login"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        </div>
+    }
+</div>
+
+<div class="card border-5 menu2">
+    <div class="card-body">
+        <div class="row g-0">
+            <div class="col-md-3">
+                <img class="rounded-start" style="width: 100%; height: auto" alt="@curso.Nombre" src="@curso.Imagen">
+            </div>
+            <div class="col-md-9">
+                <h2 class="text-center">
+                    @if (curso.Precio > 0)
+                    {
+                        <span>S/ @curso.Precio</span>
+                    }
+                    else
+                    {
+                        <span>Gratuito</span>
+                    }
+                </h2>
+                <div class="row g-0 text-center">
+                    <div class="col-md-6">
+                        <ul>
+                            <li><i class="fa fa-user" aria-hidden="true"></i>  @curso.Docente.Nombres @curso.Docente.Apellidos</li>
+                            <li><i class="fa fa-bookmark" aria-hidden="true"></i>  @curso.Categoria.Nombre</li>
+                        </ul>
+                        <div>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @if (ViewBag.Favorito)
+                                {
+                                    <a id="favorite_@curso.Id" class="button favorito"><i onclick="nofavorite(@curso.Id)" class="fa fa-heart" aria-hidden="true"></i></a>
+                                }
+                                else
+                                {
+                                    <a id="favorite_@curso.Id" class="button favorito"><i onclick="favorite(@curso.Id)" class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                }
+                            }
+                            else
+                            {
+                                <a class="button" href="/User/Login"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li><i class="fa fa-book" aria-hidden="true"></i> @curso.Modulos.Count Modulos</li>
+                            @foreach (var item in curso.Modulos)
+                            {
+                                cl += item.Clases.Count;
+                            }
+                            <li><i class="fa fa-television" aria-hidden="true"></i> @cl Clases</li>
+                        </ul>
+                        <div>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @if (ViewBag.Cesta == "Nada")
+                                {
+                                    <a class="button" onclick="Comprar(@curso.Id)" ><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                                }
+                                else if (ViewBag.Cesta == "Cesta")
+                                {
+                                    <a class="button" onclick="noComprar(@curso.Id)" ><i class="fa fa-shopping-cart" aria-hidden="true"></i> Quitar</a>
+                                }
+                                else if (ViewBag.Cesta == "Pagado")
+                                {
+                                    <a href="/Curso/Desarrollo?idCurso=@curso.Id" class="button">Ir al curso</a>
+                                }
+                            }
+                            else
+                            {
+                                <a class="button" href="/User/Login"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="feature-section ptb-100 gray-light-bg">
+    <div class="container">
+
+        <div class="curso-detalle">
+            <div class="row justify-content-center">
+                <div class="col-md-9 col-lg-8">
+                    <div class="section-heading text-center">
+                        <h2>@curso.Nombre</h2>
+                        <p class="lead">@curso.Detalle</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="cuadro">
+                <h3>Descripción</h3>
+                <p>@curso.Descripcion</p>
+            </div>
+            <br />
+            <div class="cuadro">
+                <h3>Lo que aprenderás</h3>
+                <ul>
+                    @if (curso.Aprendizajes.Count > 0)
+                    {
+                        foreach (var item in curso.Aprendizajes)
+                        {
+                            <li><i class="fa fa-check" aria-hidden="true"></i> @item.Descripcion</li>
+                        }
+                    }
+                    else
+                    {
+                        <li><i class="fa fa-check" aria-hidden="true"></i> En este curso aun faltan subir algunos detalles</li>
+                    }
+                </ul>
+            </div>
+            <br />
+            <div class="cuadro">
+                <h3>Contenido del curso</h3>
+                <div class="accordion" id="accordionExample">
+                    @if (curso.Modulos.Count > 0)
+                    {
+                        foreach (var item in curso.Modulos)
+                        {
+                            <div class="accordion-item">
+                                <p class="accordion-header" id="heading_@item.Id">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_@item.Id" aria-expanded="true" aria-controls="collapse_@item.Id">
+                                        <strong>@item.Nombre</strong>
+                                    </button>
+                                </p>
+                                <div id="collapse_@item.Id" class="accordion-collapse collapse" aria-labelledby="heading_@item.Id" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        @foreach (var clases in item.Clases)
+                                        {
+                                            <p>@i.  @clases.Nombre</p>
+                                            i++;
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <i class="fa fa-check" aria-hidden="true"> En este curso aun faltan subir algunos detalles </i>
+                    }
+                </div>
+            </div>
+            <br />
+            <div class="cuadro">
+                <h3>Requisitos para este curso</h3>
+                <ul>
+                    @if (curso.Requisitos.Count > 0)
+                    {
+                        foreach (var item in curso.Requisitos)
+                        {
+                            <li><i class="fa fa-check" aria-hidden="true"></i> @item.Requisito</li>
+                        }
+                    }
+                    else
+                    {
+                        <li><i class="fa fa-check" aria-hidden="true"></i> En este curso aun faltan subir algunos detalles</li>
+                    }
+                </ul>
+            </div>
+            <br />
+            <div>
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img class="rounded-start" style="width: 100%" src="@curso.Docente.Imagen" alt="@curso.Docente.Nombres" />
+                    </div>
+                    <div class="col-md-9">
+                        <h3 class="card-title">Instructor</h3>
+                        <h5>@curso.Docente.Nombres @curso.Docente.Apellidos</h5>
+                        <div><strong class="fst-italic">@curso.Docente.Titulo</strong></div>
+                        <div class="cuadro"><span class="fst-italic">@curso.Docente.Biografia</span></div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="cuadro">
+                <h3>Comentarios de los estudiantes</h3>
+                @if (curso.Comentarios.Count > 0)
+                {
+                    @foreach (var item in curso.Comentarios)
+                    {
+                        <div>
+                            <img class="float-left" src="@item.Usuario.Imagen" alt="@item.Usuario.Nombres" />
+                            <div class="cuadro comentario">
+                                <strong class="text-danger">@item.Usuario.Nombres @item.Usuario.Apellidos</strong>
+                                <p class="fst-italic">@item.Comentario</p>
+                            </div>
+                        </div>
+                    }
+                }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form action="/Curso/Comentario" class="col-12" method="post">
+                        <input type="hidden" name="idCurso" value="@curso.Id" />
+                        <div class="mb-3">
+                            <label class="form-label" for="Comentario">Agregar comentario</label>
+                            <input type="text" class="form-control" placeholder="Escribe un comentario acerca del curso, o tu consulta" name="Comentario" />
+                            <p class="alert-danger">@Html.ValidationMessage("Comentario")</p>
+                        </div>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Comentar</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</section>
