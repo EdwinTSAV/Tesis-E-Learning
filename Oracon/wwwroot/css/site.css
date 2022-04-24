@@ -67,20 +67,86 @@ html {
     box-sizing: inherit;
 }
 
+/** GLOBALES **/
+
+.contenedor {
+    width: 98%;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width:480px) {
+    .contenedor {
+        width: 95%;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .contenedor {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .contenedor {
+        width: 90%;
+        max-width: 1100px;
+    }
+}
+
+.seccion {
+    padding: 30px 0;
+}
+
+    .seccion p {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+/*    .seccion .line_curso {
+        padding: 10px 25px 0;
+        font-size: 1.1em;
+        text-align: justify
+    }*/
+
+h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.4em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+    h2::after {
+        content: '';
+        margin: 0 auto;
+        background-image: url(../project/separador.png);
+        height: 30px;
+        width: 100px;
+        display: block;
+    }
+
+h3 {
+    font-size: 1.8em;
+    color: #fe4918;
+    font-family: 'PT Sans', sans-serif;
+    margin: 0;
+}
+
+/*** LAYOUT ***/
 /** BARRA **/
 
 div.barra {
     background-color: black;
     padding: 15px 0;
+
 }
 
-div.fixed {
+/*div.fixed {
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 2;
-}
+}*/
 
 div.logo {
     width: 80%;
@@ -121,8 +187,9 @@ nav.navegacion-principal {
         }
 
         nav.navegacion-principal a:last-child {
-            border: 2px solid #fe4918;
             color: #fe4918;
+            border: 2px solid #fe4918;
+            border-radius: 100%;
         }
 
             nav.navegacion-principal a:last-child:hover {
@@ -174,46 +241,74 @@ div.menu-movil span {
 
 /** FOOTER**/
 
-/** GLOBALES **/
-
-.contenedor {
-    width: 98%;
-    margin: 0 auto;
+footer {
+    background-color: #280606;
+    padding-top: 40px;
+    margin-top: 20px;
 }
 
-@media only screen and (min-width:480px) {
-    .contenedor {
-        width: 95%;
+    footer .contenedor > div {
+        color: white;
+        padding: 0px 20px;
+        font-size: 12px;
     }
+
+footer ul li{
+    margin-top: 10px;
 }
+
+    footer ul li i {
+        margin: 0 10px;
+    }
 
 @media only screen and (min-width:768px) {
-    .contenedor {
-        width: 90%;
+    footer .contenedor > div {
+        width: 33.3%;
+        float: left;
     }
 }
 
-@media only screen and (min-width:992px) {
-    .contenedor {
-        width: 90%;
-        max-width: 1100px;
-    }
+footer h3 {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 20px;
 }
 
-.seccion {
-    padding: 30px 0;
+    footer h3 span {
+        color: #fe4918;
+    }
+
+footer nav.redes-sociales {
+    text-align: center;
 }
 
-    .seccion p {
-        font-size: 1.2em;
-        text-align: center;
-    }
+nav.redes-sociales {
+    text-align: center;
+}
 
-    .seccion .line_curso {
-        padding: 10px 25px 0;
-        font-size: 1.1em;
-        text-align: justify
+    nav.redes-sociales a {
+        color: white;
+        font-size: 2em;
+        margin-right: 50px;
     }
+    nav.redes-sociales {
+        padding: 20px 0;
+
+    }
+        nav.redes-sociales a:last-child {
+            margin-right: 0;
+        }
+
+div.copyright {
+    background-color: black;
+    color: white;
+    padding: 1px 0;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+
 
 .cuadro {
     margin: 25px;
@@ -296,58 +391,58 @@ ul {
 }
 
 /** PRECIOS DE CURSOS GENERAL **/
-ul.lista-precios > li {
+ul.lista-cursos > li {
     padding: 5px;
 }
 
 @media only screen and (min-width:500px) {
-    ul.lista-precios > li {
+    ul.lista-cursos > li {
         width: 50%;
         float: left;
     }
 }
 
 @media only screen and (min-width:768px) {
-    ul.lista-precios > li {
+    ul.lista-cursos > li {
         width: 33%;
         float: left;
     }
 }
 
 @media only screen and (min-width:1000px) {
-    ul.lista-precios > li {
+    ul.lista-cursos > li {
         width: 25%;
         float: left;
     }
 }
 
 @media only screen and (min-width:1200px) {
-    ul.lista-precios > li {
+    ul.lista-cursos > li {
         width: 20%;
         float: left;
     }
 }
 
-div.tabla-precio {
+div.tabla-curso {
     border: 1px solid #b5b5b5;
     padding: 15px 0;
     text-align: center;
     transition: all .5s ease;
 }
 
-    div.tabla-precio:hover {
+    div.tabla-curso:hover {
         transform: scale(1.05);
         box-shadow: 0px 0px 50px #666;
     }
 
-    div.tabla-precio ul {
+    div.tabla-curso ul {
         font-size: 12px;
         margin-top: 5px;
         line-height: 20px;
         padding: 0;
     }
 
-    div.tabla-precio h3 {
+    div.tabla-curso h3 {
         font-size: 20px;
         text-transform: uppercase;
         background-color: orangered;
@@ -357,11 +452,25 @@ div.tabla-precio {
         padding: 5px 0;
     }
 
-    div.tabla-precio a img {
+    div.tabla-curso a img {
         width: 190px;
         height: 110px;
         margin: -16px 0 1px 0
     }
+
+div.titulo-curso h3 {
+    background-color: #fe4918;
+    clear: both;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+div.titulo-curso::after {
+    clear: both;
+    display: block;
+    content: '';
+}
 
 div.features-box-icon a img {
     width: 100%;

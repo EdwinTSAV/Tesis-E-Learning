@@ -7,7 +7,6 @@
 
     <link rel="shortcut icon" href="/project/icono.jpg">
 
-    @*<link rel="stylesheet" href="https://oraconsrl.com/home/css/main.css">*@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
@@ -32,7 +31,14 @@
                 <a href="/Curso/Cursos">Cursos</a>
                 <a href="/Curso/Docente">Docentes</a>
                 <a href="/Curso/Docente">Categorias</a>
-                <a href="/Curso/Docente">Perfil</a>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a href="/user/Login"><i class="fa fa-user" aria-hidden="true"></i></a>
+                }
+                else
+                {
+                    <a href="/ajustes/index"><i class="fa fa-user" aria-hidden="true"></i></a>
+                }
             </nav>
             @*<nav class="js-mega-menu navbar navbar-expand-md header-nav">
                 <div id="navBar" class="collapse navbar-collapse">
@@ -71,86 +77,60 @@
         @RenderBody()
     </main>
 
-    <section class="ptb-60 gray-bg" id="footer">
-        <div class="container px-5">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-12 col-lg-6">
-                    <div class="cta-content-wrap text-white">
-                        <h2>Contáctanos</h2>
-                        <p class="text-dark m-0">Prol. Amalia Puga #200</p>
-                        <p class="text-dark m-0">oraconsrl@gmail.com</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-2 d-none d-lg-block">
-                    <i class="fas fa-phone-alt mr-1 color-accent"></i>
-                    <h3 class="mb-0 font-weight-light">Central Telefónica</h3>
-                    <p class="m-0">925786403 <a href="#" class="text-primary">aquí</a></p>
-                </div>
-                <div class="col-md-4 col-lg-2 d-none d-lg-block">
-                    <i class="fas fa-home mr-1 color-accent"></i>
-                    <h3 class="mb-0 font-weight-light">Oficina Central</h3>
-                    <p class="m-0">Encuéntranos <a href="#" class="text-primary">aquí</a></p>
-                </div>
-                <div class="col-md-4 col-lg-2 d-none d-lg-block">
-                    <i class="fas fa-phone-alt mr-1 color-accent"></i>
-                    <h3 class="mb-0 font-weight-light">Escríbenos</h3>
-                    <p class="m-0">Deja tu consulta <a href="#" class="text-primary">aquí</a></p>
-                </div>
+    <footer class="site-footer">
+        <div class="contenedor clearfix">
+            <div class="footer-informacion">
+                <h3>Acerca de <span>ORACON</span></h3>
+                <ul>
+                    <li>Pasantía de prácticas</li>
+                    <li>Colaborador del mesa</li>
+                    <li>Nuestra historia y principios</li>
+                    <li>Nuestro blog</li>
+                </ul>
+@*                <nav class="redes-sociales">
+                    <a href="https://www.facebook.com/Gold-Conf-101088928504837"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/gold_conference"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/channel/UCVbYnjINFhIA_qLPC9zAa8Q"><i class="fa fa-youtube-play"></i></a>
+                    <a href="https://www.instagram.com/GOLDCONF_/"><i class="fa fa-instagram"></i></a>
+                </nav>*@
             </div>
+
+            <div class="footer-contacto">
+                <h3>Contacta con <span>NOSOTROS</span></h3>
+                <ul>
+                    <li><i class="fa fa-envelope-o" aria-hidden="true"></i> oraconsrl@gmail.com</li>
+                    <li><i class="fa fa-map-marker" aria-hidden="true"></i> Prol. Amalia Puga #200</li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i> 925786403</li>
+                    <li>Cajamarca - Perú</li>
+                </ul>
+            </div>
+            
+            <div class="footer-servicios">
+                <h3>Nuestros <span>SERVICIOS</span></h3>
+                <ul>
+                    <li><i class="fa fa-check-square-o" aria-hidden="true"></i> Asesoria contable</li>
+                    <li><i class="fa fa-check-square-o" aria-hidden="true"></i> Asesoria laboral</li>
+                    <li><i class="fa fa-check-square-o" aria-hidden="true"></i> Asesoria tributaria</li>
+                </ul>
+            </div>
+
         </div>
-    </section>
-    <footer class="footer-1 ptb-60 bg-white">
-        <div class="container px-5">
-            <div class="row">
-                <div class="col-md-12 col-lg-12">
-                    <div class="row mt-0">
-                        <div class="col-sm-6 col-md-4 col-lg-4 mb-4 mb-sm-4 mb-md-0 mb-lg-0">
-                            <h5 class="font-weight-normal">ACERCA DE ORACON</h5>
-                            <ul>
-                                <li>Pasantía de prácticas</li>
-                                <li>Colaborador del mesa</li>
-                                <li>Nuestra historia y principios</li>
-                                <li>Nuestro blog</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-4 mb-4 mb-sm-4 mb-md-0 mb-lg-0">
-                            <h5 class="font-weight-normal">PRODUCTOS</h5>
-                            <ul>
-                                <li>Siscoe</li>
-                                <li>App</li>
-                                <li>Facturación Electrónica</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-4 mb-4 mb-sm-4 mb-md-0 mb-lg-0">
-                            <a href="#" class="navbar-brand mb-2">
-                                <img src="https://oraconsrl.com/home/img/logooracon.png" alt="logo" class="img-fluid" width="200">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <nav class="redes-sociales">
+            <a href="https://www.facebook.com/Gold-Conf-101088928504837"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/gold_conference"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/channel/UCVbYnjINFhIA_qLPC9zAa8Q"><i class="fa fa-youtube-play"></i></a>
+            <a href="https://www.instagram.com/GOLDCONF_/"><i class="fa fa-instagram"></i></a>
+        </nav>
+        <div class="copyright">
+            <p>&copy; 2021 Estudio Oracon SRL | Todos los derechos reservados. Prol. Amalia Puga #200, Cajamarca, Perú.</p>
         </div>
     </footer>
-    <div class="footer-bottom py-3 gray-light-bg">
-        <div class="container px-5">
-            <div class="row">
-                <div class="col-md-6 col-lg-7">
-                    <div class="copyright-wrap small-text">
-                        <p class="mb-0">&copy; 2021 Estudio Oracon SRL | Todos los derechos reservados. Prol. Amalia Puga 1234, Cajamarca, Perú.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/main.js" asp-append-version="true"></script>
-
-@*    <script src="https://oraconsrl.com/home/js/vendors/hs.megamenu.js"></script>
-    <script src="https://oraconsrl.com/home/js/app.js"></script>*@
 
     @RenderSection("Scripts", required: false)
 </body>
